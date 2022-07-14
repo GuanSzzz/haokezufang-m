@@ -1,7 +1,33 @@
 <template>
   <div>
-    <!-- 第一 -->
-    <div class="my_title">
+    <!-- 第一  登录 利用v-if判断-->
+    <div class="my_title" v-if="token">
+      <img
+        src="http://liufusong.top:8080/img/avatar.png"
+        alt="背景图"
+        class="my_title_bg"
+      />
+      <div class="my_info">
+        <div class="my_myIcon">
+          <img
+            src="`http://liufusong.top:8080${userinfo.avatar}`"
+            alt="icon"
+            class="my_info_icon"
+          />
+        </div>
+        <div class="my_user">
+          <div class="my_username">{{ userinfo.nickname }}</div>
+          <div class="my_edit">
+            <a href="#" class="my_btn_a" @click="goBack">退出</a>
+          </div>
+          <div class="my_back">
+            <span>编辑个人信息</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--第一  未登录 -->
+    <div class="my_title" v-else>
       <img
         src="http://liufusong.top:8080/img/profile/bg.png"
         alt="背景图"
@@ -25,7 +51,7 @@
     </div>
     <!-- 第二 -->
     <van-grid :column-num="3" :border="false" :icon-size="22">
-      <van-grid-item icon="star-o" text="我的收藏" />
+      <van-grid-item icon="star-o" text="我的收藏" @click="myLove" />
       <van-grid-item icon="wap-home-o" text="我的出租" />
       <van-grid-item icon="clock-o" text="看房记录" />
       <van-grid-item icon="newspaper-o" text="成为房主" />
@@ -40,10 +66,39 @@
 </template>
 
 <script>
+import { userInfo } from '@/apis/user'
 export default {
+  data() {
+    return {
+      token: '',
+      userinfo: {}
+    }
+  },
   methods: {
     goLogin() {
       this.$router.push('/login')
+    },
+    goBack() {
+      // 清除token自己更换页面
+      this.token = localStorage.removeItem('token')
+    },
+    async myLove() {
+      if (!this.token) {
+        this.$router.push('/login')
+      } else {
+        this.$router.push('/mylove')
+      }
+    }
+  },
+  async created() {
+    // 获取用户信息，需要请求头
+    try {
+      this.token = JSON.parse(localStorage.getItem('token')).token
+      const res = await userInfo(this.token)
+      console.log(res)
+      this.userinfo = res.data.body
+    } catch (e) {
+      console.log(e)
     }
   }
 }

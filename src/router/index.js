@@ -4,14 +4,17 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  // 重定向
   {
     path: '/',
     redirect: '/layout/first'
   },
+  // 登录页面
   {
     path: '/login',
     component: () => import('@/views/Login')
   },
+  // layout布局
   {
     path: '/layout',
     component: () => import('@/views/Layout'),
@@ -34,9 +37,15 @@ const routes = [
       }
     ]
   },
+  // 城市列表
   {
     path: '/citylist',
     component: () => import('@/views/First/cityList.vue')
+  },
+  // 收藏列表
+  {
+    path: '/mylove',
+    component: () => import('@/views/Home/mylove')
   }
 ]
 

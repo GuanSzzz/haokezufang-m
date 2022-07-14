@@ -14,3 +14,33 @@ export const login = (username, password) => {
     data: { username, password }
   })
 }
+
+/**
+ * 获取用户信息
+ * @param {*} token
+ * @returns Promise
+ */
+export const userInfo = (token) => {
+  return request({
+    url: '/user',
+    mothod: 'GET',
+    headers: {
+      authorization: token
+    }
+  })
+}
+
+/**
+ * 获取用户收藏列表
+ * @param {*} token
+ * @returns  Promise
+ */
+export const userlove = (token) => {
+  return request({
+    url: '/user/favorites',
+    mothod: 'GET',
+    headers: {
+      authorization: token
+    }
+  })
+}

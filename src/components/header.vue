@@ -2,7 +2,7 @@
   <div>
     <!-- 头部 -->
     <van-nav-bar
-      title="城市列表"
+      :title="title"
       left-arrow
       @click-left="backToPrePage"
       class="nav-bar"
@@ -13,6 +13,9 @@
 
 <script>
 export default {
+  props: {
+    title: String
+  },
   methods: {
     backToPrePage() {
       this.$router.back()

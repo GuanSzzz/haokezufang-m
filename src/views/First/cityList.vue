@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 头部 -->
-    <HeaderVue></HeaderVue>
+    <HeaderVue title="城市列表"></HeaderVue>
     <!-- 列表 -->
   </div>
 </template>

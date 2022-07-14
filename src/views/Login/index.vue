@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 1.导航 -->
-    <HeaderVue></HeaderVue>
+    <HeaderVue title="登录"></HeaderVue>
     <!-- 2.表单 -->
     <van-form @submit="login" class="form">
       <van-field
@@ -67,7 +67,7 @@ export default {
         console.log(res)
         if (res.data.status === 200) {
           this.$toast.success('登录成功')
-          localStorage.setItem('token', res.data.body.token)
+          localStorage.setItem('token', JSON.stringify(res.data.body))
           // 需要修改路由
           this.$router.push('/layout/home')
         } else {
