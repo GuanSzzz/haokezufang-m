@@ -41,7 +41,8 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      reg: /^[a-zA-Z0-9]{5,8}$/
     }
   },
   methods: {
@@ -49,8 +50,36 @@ export default {
       this.$router.back()
     },
     async login() {
-      const res = await login(this.username, this.password)
-      console.log(res)
+      //  return const res = await login(this.username, this.password)
+      // console.log(res)
+      if (this.username.trim() === '' || this.password.trim() === '') {
+        this.$toast('内容不能为空')
+        return
+      }
+      if (!this.reg.test(this.username.trim())) {
+        return this.$toast('用户名格式5-8位字母或数字')
+      }
+      if (!this.reg.test(this.password.trim())) {
+        return this.$toast('密码格式6-12位数字或字母')
+      }
+      this.$toast.loading({
+        message: '加载中...',
+        forbidClick: true
+      })
+      try {
+        const res = await login(this.username, this.password)
+        console.log(res)
+        if (res.data.status === 200) {
+          this.$toast.success('登录成功')
+          localStorage.setItem('token', res.data.body.token)
+          // 需要修改路由
+          this.$router.push('/layout/home')
+        } else {
+          this.$toast.fail('登录失败')
+        }
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }
