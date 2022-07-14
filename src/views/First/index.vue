@@ -8,7 +8,9 @@
         placeholder="请输入小区或地址"
       >
         <template #left>
-          <span class="area_name">北京 <van-icon name="arrow-down" /></span>
+          <span class="area_name" @click="goCityList"
+            >北京 <van-icon name="arrow-down"
+          /></span>
         </template>
         <template #action>
           <van-icon name="map-marked" />
@@ -83,6 +85,12 @@ export default {
     return {
       swiperlist: [],
       homelist: []
+    }
+  },
+  methods: {
+    // 去往城市列表页面
+    goCityList() {
+      this.$router.push('/citylist')
     }
   },
   async created() {

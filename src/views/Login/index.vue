@@ -1,13 +1,7 @@
 <template>
   <div>
     <!-- 1.导航 -->
-    <van-nav-bar
-      title="账号登录"
-      left-arrow
-      @click-left="backToPrePage"
-      class="nav-bar"
-      color="#fff"
-    />
+    <HeaderVue></HeaderVue>
     <!-- 2.表单 -->
     <van-form @submit="login" class="form">
       <van-field
@@ -37,6 +31,8 @@
 
 <script>
 import { login } from '@/apis/user'
+import HeaderVue from '@/components/header.vue'
+
 export default {
   data() {
     return {
@@ -81,6 +77,9 @@ export default {
         console.log(e)
       }
     }
+  },
+  components: {
+    HeaderVue
   }
 }
 </script>

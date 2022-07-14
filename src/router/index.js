@@ -33,6 +33,10 @@ const routes = [
         component: () => import('@/views/Home')
       }
     ]
+  },
+  {
+    path: '/citylist',
+    component: () => import('@/views/First/cityList.vue')
   }
 ]
 
