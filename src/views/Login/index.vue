@@ -60,7 +60,8 @@ export default {
       }
       this.$toast.loading({
         message: '加载中...',
-        forbidClick: true
+        forbidClick: true,
+        duration: 0
       })
       try {
         const res = await login(this.username, this.password)

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding-bottom: 50px">
     <router-view></router-view>
   </div>
 </template>
@@ -16,7 +16,7 @@ body {
 * {
   box-sizing: border-box;
 }
-a{
+a {
   outline: none;
   color: #333;
 }

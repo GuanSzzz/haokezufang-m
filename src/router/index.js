@@ -37,15 +37,20 @@ const routes = [
       }
     ]
   },
-  // 城市列表
+  // 城市列表页面
   {
     path: '/citylist',
     component: () => import('@/views/First/cityList.vue')
   },
-  // 收藏列表
+  // 收藏列表页面
   {
     path: '/mylove',
     component: () => import('@/views/Home/mylove')
+  },
+  // 发布房源页面
+  {
+    path: '/sendhouse',
+    component: () => import('@/views/First/sendhouse')
   }
 ]
 

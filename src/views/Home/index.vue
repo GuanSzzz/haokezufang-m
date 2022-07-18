@@ -10,7 +10,7 @@
       <div class="my_info">
         <div class="my_myIcon">
           <img
-            src="`http://liufusong.top:8080${userinfo.avatar}`"
+            :src="`http://liufusong.top:8080${userinfo.avatar}`"
             alt="icon"
             class="my_info_icon"
           />
@@ -94,7 +94,7 @@ export default {
     // 获取用户信息，需要请求头
     try {
       this.token = JSON.parse(localStorage.getItem('token')).token
-      const res = await userInfo(this.token)
+      const res = await userInfo()
       console.log(res)
       this.userinfo = res.data.body
     } catch (e) {

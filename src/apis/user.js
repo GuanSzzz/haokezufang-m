@@ -20,13 +20,10 @@ export const login = (username, password) => {
  * @param {*} token
  * @returns Promise
  */
-export const userInfo = (token) => {
+export const userInfo = () => {
   return request({
     url: '/user',
-    mothod: 'GET',
-    headers: {
-      authorization: token
-    }
+    method: 'GET'
   })
 }
 
