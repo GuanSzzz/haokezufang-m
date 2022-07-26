@@ -51,6 +51,16 @@ const routes = [
   {
     path: '/sendhouse',
     component: () => import('@/views/First/sendhouse')
+  },
+  // 发布房源具体小区页面
+  {
+    path: '/searchxiaoqu',
+    component: () => import('@/views/First/searchxiaoqu')
+  },
+  // 房屋信息详情页
+  {
+    path: '/houseinfo',
+    component: () => import('@/views/Houseinfo')
   }
 ]
 

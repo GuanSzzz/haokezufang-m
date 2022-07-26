@@ -26,6 +26,7 @@ export default {
 
 <style scoped lang="less">
 .nav-bar {
+  width: 100%;
   background-color: #21b97a;
   color: #fff;
   :deep(.van-icon-arrow-left) {

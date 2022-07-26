@@ -10,6 +10,7 @@
         :title="item.title"
         :thumb="`http://liufusong.top:8080${item.houseImg}`"
         class="tags"
+        @click="goHouseInfo(item)"
       >
         <template #tags>
           <van-tag
@@ -29,6 +30,13 @@
 export default {
   props: {
     homelist: []
+  },
+  methods: {
+    goHouseInfo(item) {
+      console.log(item)
+      this.$store.commit('setHouseCode', item.houseCode)
+      this.$router.push('/houseinfo')
+    }
   }
 }
 </script>
